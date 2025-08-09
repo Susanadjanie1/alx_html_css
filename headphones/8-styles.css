@@ -1,0 +1,455 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variables */
+:root {
+    --primary-color: #FF6565;
+    --text-color: #ffffff;
+    --background-color: #161616;
+    --font-family-source-sans-pro: 'Source Sans Pro', sans-serif;
+    --font-family-spin-cycle: 'Spin Cycle OT', sans-serif;
+}
+
+body {
+    font-family: var(--font-family-source-sans-pro);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Reusable Container */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    background-image: url('images/headphones_hero_1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.header-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo */
+.logo-img {
+    height: 30px;
+}
+
+/* Navigation - Mobile First */
+.menu-toggle {
+    display: block;
+    cursor: pointer;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 0;
+    width: 25px;
+    height: 25px;
+    position: relative;
+}
+
+.nav-icon {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: var(--text-color);
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.nav-icon::before,
+.nav-icon::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: var(--text-color);
+    position: absolute;
+    left: 0;
+    transition: transform 0.3s ease, top 0.3s ease;
+}
+
+.nav-icon::before {
+    top: -8px;
+}
+
+.nav-icon::after {
+    top: 8px;
+}
+
+/* Hamburger icon */
+.menu-toggle.is-open .nav-icon {
+    background-color: transparent;
+}
+
+.menu-toggle.is-open .nav-icon::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.menu-toggle.is-open .nav-icon::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+.main-nav {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 5;
+    transition: transform 0.3s ease-in-out;
+}
+
+.main-nav.is-open {
+    display: flex;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+}
+
+.nav-item {
+    margin: 20px 0;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link:active {
+    color: var(--primary-color);
+}
+
+/* Hero Content */
+.hero-content {
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.hero-content h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.hero-content p:nth-of-type(1) {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.call-to-action-btn {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: opacity 0.3s ease;
+    text-transform: uppercase;
+}
+
+.call-to-action-btn:hover,
+.call-to-action-btn:active {
+    opacity: 0.9;
+}
+
+.hero-content p:nth-of-type(2) {
+    max-width: 600px;
+    font-size: 16px;
+    margin-top: 50px;
+    line-height: 1.5;
+}
+
+/* What we do...*/
+.what-we-do {
+    padding: 80px 0;
+    background-color: #fff;
+    color: #000;
+}
+
+.what-we-do .section-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.what-we-do .section-intro {
+    max-width: 600px;
+    margin: 0 auto 50px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.what-we-do .services-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.what-we-do .service-block {
+    text-align: center;
+    max-width: 250px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.what-we-do .service-block:hover {
+    transform: scale(1.1);
+}
+
+.what-we-do .service-block h3 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.what-we-do .service-block p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Icon Styling */
+.service-block i {
+    font-size: 64px;
+    color: var(--primary-color);
+}
+
+/* Our results */
+.our-results {
+    background-image: url('images/headphones_hero_2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #2D2D39; 
+    padding: 80px 0;
+    text-align: center;
+}
+
+.our-results .section-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.our-results .section-intro {
+    max-width: 600px;
+    margin: 0 auto 50px;
+    line-height: 1.5;
+}
+
+.our-results .results-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.our-results .result-block {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.our-results .result-block:hover {
+    transform: scale(1.1);
+}
+
+/* Keyframes for continuous rotation */
+@keyframes rotatePentagon {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.our-results .pentagon {
+    background-color: var(--primary-color);
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: rotatePentagon 20s linear infinite;
+}
+
+.our-results .result-percentage {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.our-results .result-description {
+    font-size: 14px;
+    margin-top: 5px;
+    line-height: 1;
+}
+
+/* Contact us */
+.contact-us {
+    padding: 80px 20px;
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+}
+
+.contact-us .section-title {
+    font-size: 32px;
+    margin-bottom: 50px;
+}
+
+.contact-us .contact-form {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.contact-us .form-group {
+    margin-bottom: 30px;
+}
+
+.contact-us label {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.contact-us input[type="text"],
+.contact-us input[type="email"],
+.contact-us textarea {
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    font-size: 16px;
+}
+
+.contact-us textarea {
+    resize: none;
+}
+
+.contact-us .call-to-action-btn {
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Footer Section Styling */
+.footer {
+    background-color: #071520;
+    padding: 40px 20px;
+    color: var(--text-color);
+}
+
+.footer .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+}
+
+.footer .social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.footer .social-icons i {
+    font-size: 24px;
+    color: #fff;
+}
+
+.footer .copyright {
+    font-size: 12px;
+    color: #888;
+}
+
+/* Desktop Styles */
+@media (min-width: 481px) {
+    .menu-toggle {
+        display: none;
+    }
+
+    .main-nav {
+        display: block;
+        position: static;
+        width: auto;
+        height: auto;
+        background-color: transparent;
+    }
+
+    .nav-list {
+        display: flex;
+        gap: 20px;
+    }
+
+    .nav-link {
+        font-size: 16px;
+    }
+
+    .what-we-do .services-container,
+    .our-results .results-container {
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .what-we-do .service-block,
+    .our-results .result-block {
+        flex: 1;
+        max-width: none;
+    }
+
+    .footer .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .footer .copyright {
+        margin: 0;
+    }
+}
